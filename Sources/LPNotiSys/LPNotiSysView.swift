@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-struct LPNotiSysView: View {
+public struct LPNotiSysView: View {
     
     // MARK: AppStorage에 저장할 것
     @State private var date = Date()
@@ -21,7 +21,7 @@ struct LPNotiSysView: View {
     let manager = NotificationManager.instance
     @State private var popups: Bool = false
     
-    var body: some View {
+    public var body: some View {
         VStack {
             
             VStack {
@@ -112,9 +112,9 @@ struct LPNotiSysView: View {
 }
 
 
-//#Preview {
-//    SwiftUIView()
-//}
+#Preview {
+    LPNotiSysView()
+}
 
 
 
