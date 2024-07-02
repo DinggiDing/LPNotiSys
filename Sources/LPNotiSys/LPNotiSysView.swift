@@ -21,6 +21,9 @@ public struct LPNotiSysView: View {
     let manager = NotificationManager.instance
     @State private var popups: Bool = false
     
+    // public initializer 추가
+    public init() {}
+    
     public var body: some View {
         VStack {
             
