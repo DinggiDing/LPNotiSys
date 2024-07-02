@@ -13,7 +13,7 @@ public class NotificationManager {
 //    static let instance = NotificationManager()
     public init() {}
     
-    func requestAuthorization() {
+    public func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         UNUserNotificationCenter.current().requestAuthorization(options: options) { (success, error) in
             if let error = error {
@@ -24,7 +24,7 @@ public class NotificationManager {
         }
     }
     
-    func scheduleNotification() {
+    public func scheduleNotification() {
         let message = inquiryMessages.randomElement() ?? "Stay Curious"
         let content = UNMutableNotificationContent()
         content.title = "Docent"
