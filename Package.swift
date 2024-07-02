@@ -14,11 +14,15 @@ let package = Package(
             name: "LPNotiSys",
             targets: ["LPNotiSys"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/notsobigcompany/BigUIPaging.git", from: "0.0.3"),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "LPNotiSys"),
+            name: "LPNotiSys",
+            dependencies: ["BigUIPaging"]),
         .testTarget(
             name: "LPNotiSysTests",
             dependencies: ["LPNotiSys"]),

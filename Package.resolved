@@ -1,0 +1,15 @@
+{
+  "originHash" : "7c23187955e56eb93cc7a528c846c4a7681b959f3de9177d693d3ba2ea149ad7",
+  "pins" : [
+    {
+      "identity" : "biguipaging",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/notsobigcompany/BigUIPaging.git",
+      "state" : {
+        "revision" : "40fa6e1683bd47b962e216c05377bfd1b8f760de",
+        "version" : "0.0.3"
+      }
+    }
+  ],
+  "version" : 3
+}

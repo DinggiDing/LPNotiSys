@@ -25,20 +25,29 @@ class NotificationManager {
     }
     
     func scheduleNotification() {
+        let message = inquiryMessages.randomElement() ?? "Stay Curious"
         let content = UNMutableNotificationContent()
         content.title = "Docent"
-        content.body = "새로운 상품을 소개해드릴께요"
+        content.body = message
         content.sound = .default
         content.badge = 1
         
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()   // 초기화
 
         let datecomponent = DateComponents(hour: 10, minute: 00)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
-        
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
+        // show this notification five seconds from now
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
     }
     
+    
+    let inquiryMessages = [
+        "Did you know that curiosity is the key to learning?",
+        "Exploring new ideas can lead to great discoveries!",
+        "Keep asking questions, and you'll find the answers.",
+        "Curiosity drives innovation. What's your next question?"
+    ]
 }
