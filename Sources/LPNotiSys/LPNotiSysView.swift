@@ -112,9 +112,9 @@ struct LPNotiSysView: View {
 }
 
 
-#Preview {
-    SwiftUIView()
-}
+//#Preview {
+//    SwiftUIView()
+//}
 
 
 
