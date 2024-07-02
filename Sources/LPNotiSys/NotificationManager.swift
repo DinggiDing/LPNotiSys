@@ -37,7 +37,7 @@ public class NotificationManager {
         let datecomponent = DateComponents(hour: 10, minute: 00)
 //        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
         // show this notification five seconds from now
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 70, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
