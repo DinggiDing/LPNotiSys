@@ -10,8 +10,8 @@ import Foundation
 import UserNotifications
 
 public class NotificationManager {
-    static let instance = NotificationManager()
-    private init() {}
+//    static let instance = NotificationManager()
+    public init() {}
     
     func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
