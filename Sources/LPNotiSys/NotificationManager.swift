@@ -25,7 +25,8 @@ public class NotificationManager {
     }
     
     public func scheduleNotification() {
-        let message = inquiryMessages.randomElement() ?? "Stay Curious"
+        let randomIndex = Int.random(in: 0..<inquiryMessages.count)
+        let message = inquiryMessages[randomIndex]
         let content = UNMutableNotificationContent()
         content.title = "Docent"
         content.body = message
