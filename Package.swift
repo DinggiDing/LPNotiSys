@@ -16,6 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/notsobigcompany/BigUIPaging.git", from: "0.0.3"),
+        .package(url: "https://github.com/nalexn/ViewInspector.git", from: "0.9.11"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -25,6 +26,6 @@ let package = Package(
             dependencies: ["BigUIPaging"]),
         .testTarget(
             name: "LPNotiSysTests",
-            dependencies: ["LPNotiSys"]),
+            dependencies: ["LPNotiSys", "ViewInspector"]),
     ]
 )

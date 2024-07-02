@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import UserNotifications
 
-class NotificationManager {
+public class NotificationManager {
     static let instance = NotificationManager()
     private init() {}
     
