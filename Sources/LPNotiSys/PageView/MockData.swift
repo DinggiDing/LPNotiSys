@@ -48,4 +48,12 @@ class MockData {
         [Color.grad4, Color.grad4_2],
         [Color.grad5, Color.grad5_2],
     ]
+    
+    static let type_en = [
+        "default",
+        "question",
+        "emotion",
+        "quote",
+        "regret"
+    ]
 }

@@ -107,7 +107,7 @@ public struct LPNotiSysView: View {
         })
         .onAppear {
             manager.requestAuthorization()
-            manager.scheduleNotification()
+            manager.scheduleNotification(idx: typeSelected)
         }
         .navigationBarTitle("알림 설정")
         

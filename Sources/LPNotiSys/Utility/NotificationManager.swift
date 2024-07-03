@@ -24,12 +24,13 @@ class NotificationManager {
         }
     }
     
-    func scheduleNotification() {
-        let randomIndex = Int.random(in: 0..<inquiryMessages.count)
-        let message = inquiryMessages[randomIndex]
+    func scheduleNotification(idx: Int) {
+//        let randomIndex = Int.random(in: 0..<inquiryMessages.count)
+//        let message = inquiryMessages[randomIndex]
+        let message = Gettxt.readTextFile(name: MockData.type_en[idx])
         let content = UNMutableNotificationContent()
-        content.title = "Docent"
-        content.body = message
+        content.title = "1 Day Diary"
+        content.body = message ?? MockData.bodytext[idx]
         content.sound = .default
         content.badge = 1
         
@@ -43,12 +44,4 @@ class NotificationManager {
         
         UNUserNotificationCenter.current().add(request)
     }
-    
-    
-    let inquiryMessages = [
-        "Did you know that curiosity is the key to learning?",
-        "Exploring new ideas can lead to great discoveries!",
-        "Keep asking questions, and you'll find the answers.",
-        "Curiosity drives innovation. What's your next question?"
-    ]
 }
