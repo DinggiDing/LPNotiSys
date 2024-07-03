@@ -18,7 +18,7 @@ public struct LPNotiSysView: View {
     @State private var isSentenabled: Bool = false
     @State private var typeSelected: Int = 0
     
-//    let manager = NotificationManager.instance
+    let manager = NotificationManager.instance
     @State private var popups: Bool = false
     
     // public initializer 추가
@@ -105,10 +105,10 @@ public struct LPNotiSysView: View {
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(40)
         })
-//        .onAppear {
-//            manager.requestAuthorization()
-//            manager.scheduleNotification()
-//        }
+        .onAppear {
+            manager.requestAuthorization()
+            manager.scheduleNotification()
+        }
         .navigationBarTitle("알림 설정")
         
     }

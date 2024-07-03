@@ -9,11 +9,11 @@ import SwiftUI
 import Foundation
 import UserNotifications
 
-public class NotificationManager {
-//    static let instance = NotificationManager()
-    public init() {}
+class NotificationManager {
+    static let instance = NotificationManager()
+    private init() {}
     
-    public func requestAuthorization() {
+    func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         UNUserNotificationCenter.current().requestAuthorization(options: options) { (success, error) in
             if let error = error {
@@ -24,7 +24,7 @@ public class NotificationManager {
         }
     }
     
-    public func scheduleNotification() {
+    func scheduleNotification() {
         let randomIndex = Int.random(in: 0..<inquiryMessages.count)
         let message = inquiryMessages[randomIndex]
         let content = UNMutableNotificationContent()

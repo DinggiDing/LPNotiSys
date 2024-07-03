@@ -1,0 +1,14 @@
+[
+    {
+        "category1": [
+            "Sentence 1 in category 1",
+            "Sentence 2 in category 1",
+            "Sentence 3 in category 1"
+        ],
+        "category2": [
+            "Sentence 1 in category 2",
+            "Sentence 2 in category 2",
+            "Sentence 3 in category 2"
+        ]
+    }
+]
