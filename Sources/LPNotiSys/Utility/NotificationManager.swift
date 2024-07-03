@@ -25,16 +25,32 @@ class NotificationManager {
     }
     
     func scheduleNotification(idx: Int) {
-//        let randomIndex = Int.random(in: 0..<inquiryMessages.count)
+        var message = MockData.bodytext[idx]
+        switch idx {
+        case 0:
+            let randomIndex = Int.random(in: 0..<SentData.def.count)
+            message = SentData.def[randomIndex]
+        case 1:
+            let randomIndex = Int.random(in: 0..<SentData.que.count)
+            message = SentData.que[randomIndex]
+        case 2:
+            let randomIndex = Int.random(in: 0..<SentData.emo.count)
+            message = SentData.emo[randomIndex]
+        default:
+            let randomIndex = Int.random(in: 0..<SentData.quo.count)
+            message = SentData.quo[randomIndex]
+        }
+        
+//        let randomIndex = Int.random(in: 0..<SentData.count)
 //        let message = inquiryMessages[randomIndex]
-        let message = Gettxt.readTextFile(name: MockData.type_en[idx])
+//        let message = Gettxt.readTextFile(name: MockData.type_en[idx])
         let content = UNMutableNotificationContent()
         content.title = "1 Day Diary"
-        content.body = message ?? MockData.bodytext[idx]
+        content.body = message
         content.sound = .default
         content.badge = 1
         
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()   // 초기화
+//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()   // 초기화
 
         let datecomponent = DateComponents(hour: 10, minute: 00)
 //        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
