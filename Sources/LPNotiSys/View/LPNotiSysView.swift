@@ -13,14 +13,13 @@ public struct LPNotiSysView: View {
     
     // MARK: AppStorage에 저장할 것
     @State private var date = Date()
-    @State private var isNotienabled: Bool = true
+    @State private var isNotienabled: Bool = false
     @State private var isTimeenabled: Bool = false
     @State private var isSentenabled: Bool = false
     @State private var typeSelected: Int = 0
     
     let manager = NotificationManager.instance
     @State private var popups: Bool = false
-    @State private var someToggle = false
 
     // public initializer 추가
     public init() {}
@@ -36,7 +35,15 @@ public struct LPNotiSysView: View {
                     Spacer()
                 }
                 .padding(.horizontal, 32)
-
+                
+                HStack {
+                    Text("꾸준한 일기 작성을 위한 나만의 알림 설정하기")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
+                    Spacer()
+                }
+                .padding(.horizontal, 32)
+                .padding(.bottom, 4)
             }
             .padding(.top, 8)
             
@@ -60,14 +67,20 @@ public struct LPNotiSysView: View {
                                 isTimeenabled = false
                             }
                         }
-                        .onTapGesture {
-                            manager.requestAuthorization()
-                            manager.scheduleNotification(idx: typeSelected)
-                        }
+                        .disabled(true)
                         .tint(Color.maingra)
+                    
                     if !isNotienabled {
-                        Text("꾸준한 일기 작성을 위해 알림을 켜주세요.")
-                            .foregroundStyle(.gray)
+                        HStack {
+                            Text("꾸준한 일기 작성을 위해")
+                                .foregroundStyle(.gray)
+                            Spacer()
+                            Button(action: {
+                                openAppSettings()
+                            }, label: {
+                                Text("알림 켜기")
+                            })
+                        }
                     }
                 } header: {
                     Text("알림")
@@ -116,6 +129,8 @@ public struct LPNotiSysView: View {
         })
         .onAppear {
             getpushnotiauth()
+            manager.requestAuthorization()
+            manager.scheduleNotification(idx: typeSelected)
         }
         .navigationBarTitle("알림 설정")
         
@@ -125,11 +140,19 @@ public struct LPNotiSysView: View {
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: {
             setting in
             if setting.authorizationStatus == .authorized {
-                self.someToggle = true
+                self.isNotienabled = true
             } else {
-                self.someToggle = false
+                self.isNotienabled = false
             }
         })
+    }
+    
+    private func openAppSettings() {
+        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(appSettings) {
+                UIApplication.shared.open(appSettings)
+            }
+        }
     }
 }
 
