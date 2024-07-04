@@ -15,7 +15,7 @@ public struct LPNotiSysView: View {
     @AppStorage("LPN_savedTime") private var savedTime: String = "21:00:00"
 
     @State private var date = Date()
-    @State private var isNotienabled: Bool = true
+    @State private var isNotienabled: Bool = false
     @AppStorage("LPN_isTime") private var isTimeenabled: Bool = false
     @AppStorage("LPN_typeSent") private var typeSelected: Int = 0
     
@@ -26,7 +26,6 @@ public struct LPNotiSysView: View {
     // public initializer 추가
     public init() {
         // AppStorage에 저장된 시간을 Date 객체로 변환하여 초기값 설정
-        
         if let savedDate = timeFormatter.date(from: savedTime) {
             _date = State(initialValue: savedDate)
         }
@@ -120,8 +119,6 @@ public struct LPNotiSysView: View {
                             }
                             .blur(radius: isNotienabled ? 0 : 3.0)
                             .allowsHitTesting(isNotienabled)
-
-                        
                     }
                     .padding(.vertical, 4)
                 } header: {
@@ -139,12 +136,15 @@ public struct LPNotiSysView: View {
                 .presentationCornerRadius(40)
         })
         .onAppear {
-//            getpushnotiauth()
+            getpushnotiauth()
             manager.requestAuthorization()
-            manager.scheduleNotification(idx: typeSelected)
+            manager.scheduleNotification(idx: typeSelected, handm: savedTime)
         }
-        .onChange(of: typeSelected) { newValue in
-            manager.scheduleNotification(idx: typeSelected)
+        .onChange(of: typeSelected) {
+            manager.scheduleNotification(idx: typeSelected, handm: savedTime)
+        }
+        .onChange(of: savedTime) {
+            manager.scheduleNotification(idx: typeSelected, handm: savedTime)
         }
         .navigationBarTitle("알림 설정")
         

@@ -25,7 +25,7 @@ class NotificationManager {
         }
     }
     
-    func scheduleNotification(idx: Int) {
+    func scheduleNotification(idx: Int, handm: String) {
         var message = MockData.bodytext[idx]
         switch idx {
         case 0:
@@ -47,6 +47,8 @@ class NotificationManager {
             let randomIndex = generateRandomInt(maxValue: SentData.def.count)
             message = SentData.def[randomIndex]
         }
+        let hour = Int(handm)! / 10000
+        let minute = (Int(handm)! % 10000) / 100
 
         let content = UNMutableNotificationContent()
         content.title = "1 Day Diary"
@@ -56,10 +58,10 @@ class NotificationManager {
         
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()   // 초기화
 
-        let datecomponent = DateComponents(hour: 10, minute: 00)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
+        let datecomponent = DateComponents(hour: hour, minute: minute)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
         // show this notification five seconds from now
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 70, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 70, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
