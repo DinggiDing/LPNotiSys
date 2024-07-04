@@ -54,7 +54,7 @@ class NotificationManager {
         content.sound = .default
         content.badge = 1
         
-//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()   // 초기화
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()   // 초기화
 
         let datecomponent = DateComponents(hour: 10, minute: 00)
 //        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
