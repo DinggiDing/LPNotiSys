@@ -47,8 +47,18 @@ class NotificationManager {
             let randomIndex = generateRandomInt(maxValue: SentData.def.count)
             message = SentData.def[randomIndex]
         }
-        let hour = Int(handm)! / 10000
-        let minute = (Int(handm)! % 10000) / 100
+        
+        var hour = 0
+        var minute = 0
+        
+        if let timeComponents = extractHourAndMinute(from: handm) {
+            hour = timeComponents.hour
+            minute = timeComponents.minute
+//            print("Hour: \(timeComponents.hour), Minute: \(timeComponents.minute)")
+        } else {
+            print("Invalid time string")
+        }
+        
 
         let content = UNMutableNotificationContent()
         content.title = "1 Day Diary"
@@ -97,5 +107,21 @@ class NotificationManager {
         let hashData = sha256Hash(from: dateString)
         let randomInt = getRandomInt(from: hashData, maxValue: maxValue)
         return randomInt
+    }
+    
+    
+    func extractHourAndMinute(from timeString: String) -> (hour: Int, minute: Int)? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+
+        guard let date = dateFormatter.date(from: timeString) else {
+            return nil
+        }
+
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+
+        return (hour, minute)
     }
 }
