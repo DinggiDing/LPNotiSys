@@ -29,24 +29,25 @@ class NotificationManager {
         var message = MockData.bodytext[idx]
         switch idx {
         case 0:
-//            let randomIndex = Int.random(in: 0..<SentData.def.count)
-//            message = SentData.def[randomIndex]
             let randomIndex = generateRandomInt(maxValue: SentData.def.count)
             message = SentData.def[randomIndex]
         case 1:
-            let randomIndex = Int.random(in: 0..<SentData.que.count)
+            let randomIndex = generateRandomInt(maxValue: SentData.que.count)
             message = SentData.que[randomIndex]
         case 2:
-            let randomIndex = Int.random(in: 0..<SentData.emo.count)
+            let randomIndex = generateRandomInt(maxValue: SentData.emo.count)
             message = SentData.emo[randomIndex]
-        default:
-            let randomIndex = Int.random(in: 0..<SentData.quo.count)
+        case 3:
+            let randomIndex = generateRandomInt(maxValue: SentData.quo.count)
             message = SentData.quo[randomIndex]
+        case 4:
+            let randomIndex = generateRandomInt(maxValue: SentData.reg.count)
+            message = SentData.reg[randomIndex]
+        default:
+            let randomIndex = generateRandomInt(maxValue: SentData.def.count)
+            message = SentData.def[randomIndex]
         }
-        
-//        let randomIndex = Int.random(in: 0..<SentData.count)
-//        let message = inquiryMessages[randomIndex]
-//        let message = Gettxt.readTextFile(name: MockData.type_en[idx])
+
         let content = UNMutableNotificationContent()
         content.title = "1 Day Diary"
         content.body = message

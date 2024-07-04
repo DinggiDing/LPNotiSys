@@ -12,17 +12,25 @@ import SwiftUI
 public struct LPNotiSysView: View {
     
     // MARK: AppStorage에 저장할 것
+    @AppStorage("LPN_savedTime") private var savedTime: String = "21:00:00"
+
     @State private var date = Date()
-    @State private var isNotienabled: Bool = false
-    @State private var isTimeenabled: Bool = false
-    @State private var isSentenabled: Bool = false
-    @State private var typeSelected: Int = 0
+    @State private var isNotienabled: Bool = true
+    @AppStorage("LPN_isTime") private var isTimeenabled: Bool = false
+    @AppStorage("LPN_typeSent") private var typeSelected: Int = 0
     
     let manager = NotificationManager.instance
     @State private var popups: Bool = false
 
+
     // public initializer 추가
-    public init() {}
+    public init() {
+        // AppStorage에 저장된 시간을 Date 객체로 변환하여 초기값 설정
+        
+        if let savedDate = timeFormatter.date(from: savedTime) {
+            _date = State(initialValue: savedDate)
+        }
+    }
     
     public var body: some View {
         VStack {
@@ -67,7 +75,7 @@ public struct LPNotiSysView: View {
                                 isTimeenabled = false
                             }
                         }
-                        .disabled(true)
+                        .allowsHitTesting(false)
                         .tint(Color.maingra)
                     
                     if !isNotienabled {
@@ -93,6 +101,10 @@ public struct LPNotiSysView: View {
                     
                     if isTimeenabled {
                         DatePicker("알림 시간", selection: $date, displayedComponents: [.hourAndMinute])
+                            .onChange(of: date) { newDate in
+                                // 선택한 시간을 AppStorage에 저장
+                                savedTime = timeFormatter.string(from: newDate)
+                            }
                     }
                 } header: {
                     Text("알림 시간 설정하기")
@@ -109,10 +121,9 @@ public struct LPNotiSysView: View {
                             .blur(radius: isNotienabled ? 0 : 3.0)
                             .allowsHitTesting(isNotienabled)
 
-
+                        
                     }
                     .padding(.vertical, 4)
-                      
                 } header: {
                     Text("알림 문구 설정하기")
                 }
@@ -122,13 +133,13 @@ public struct LPNotiSysView: View {
             .scrollContentBackground(.hidden)
         }
         .sheet(isPresented: $popups, content: {
-            DeckStyleView(selection: $typeSelected)
+            DeckStyleView(selection: $typeSelected, ispopups: $popups)
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(40)
         })
         .onAppear {
-            getpushnotiauth()
+//            getpushnotiauth()
             manager.requestAuthorization()
             manager.scheduleNotification(idx: typeSelected)
         }
@@ -153,6 +164,13 @@ public struct LPNotiSysView: View {
                 UIApplication.shared.open(appSettings)
             }
         }
+    }
+    
+    // 시간 포맷터 설정
+    private var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter
     }
 }
 

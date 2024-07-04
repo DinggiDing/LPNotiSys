@@ -11,9 +11,29 @@ import BigUIPaging
 struct DeckStyleView: View {
 //    @State private var selection: Int = 0
     @Binding var selection: Int
+    @Binding var ispopups: Bool
 
     var body: some View {
-
+        VStack {
+            HStack {
+                Text("알림 문구 스타일")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            .padding(.horizontal, 32)
+            .padding(.bottom, 4)
+            
+            HStack {
+                Text("동기부여를 받도록 원하는 스타일을 선택하세요")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+                Spacer()
+            }
+            .padding(.horizontal, 32)
+            .padding(.bottom, 4)
+        }
+        .padding(.top, 8)
         PageView(selection: $selection) {
             ForEach(0..<5, id: \.self) { id in
                 DeckStyleSubView(value: id, title: MockData.title[id], bodytext: MockData.bodytext[id])
@@ -27,11 +47,39 @@ struct DeckStyleView: View {
             total: 5
         )
         .pageIndicatorBackgroundStyle(.prominent)
+        .padding(.bottom, 24)
+
+        
+        VStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 40)
+                    .fill(
+                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.9), .black.opacity(0.9)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .frame(height: 44)
+                    .shadow(color: .indigo.opacity(0.2), radius: 10, x: 10, y: 10)
+                    .shadow(color: .white.opacity(0.6), radius: 10, x: 10, y:10)
+                    
+                
+                HStack(spacing: 13) {
+                    
+                    Text("마음에 들어요")
+                        .font(.system(size: 14, weight: .bold))
+                        .onTapGesture {
+                            ispopups.toggle()
+                        }
+                        
+                }
+                .foregroundStyle(.white)
+            }
+        }            
+        .padding(.horizontal, 32)
+
     }
 }
 
 #Preview {
-    DeckStyleView(selection: .constant(0))
+    DeckStyleView(selection: .constant(0), ispopups: .constant(true))
 }
 
 struct DeckStyleSubView: View {
