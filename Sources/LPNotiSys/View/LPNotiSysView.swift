@@ -20,7 +20,8 @@ public struct LPNotiSysView: View {
     
     let manager = NotificationManager.instance
     @State private var popups: Bool = false
-    
+    @State private var someToggle = false
+
     // public initializer 추가
     public init() {}
     
@@ -59,6 +60,10 @@ public struct LPNotiSysView: View {
                                 isTimeenabled = false
                             }
                         }
+                        .onTapGesture {
+                            manager.requestAuthorization()
+                            manager.scheduleNotification(idx: typeSelected)
+                        }
                         .tint(Color.maingra)
                     if !isNotienabled {
                         Text("꾸준한 일기 작성을 위해 알림을 켜주세요.")
@@ -88,6 +93,10 @@ public struct LPNotiSysView: View {
                             .onTapGesture {
                                 popups.toggle()
                             }
+                            .blur(radius: isNotienabled ? 0 : 3.0)
+                            .allowsHitTesting(isNotienabled)
+
+
                     }
                     .padding(.vertical, 4)
                       
@@ -106,11 +115,21 @@ public struct LPNotiSysView: View {
                 .presentationCornerRadius(40)
         })
         .onAppear {
-            manager.requestAuthorization()
-            manager.scheduleNotification(idx: typeSelected)
+            getpushnotiauth()
         }
         .navigationBarTitle("알림 설정")
         
+    }
+    
+    private func getpushnotiauth() {
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: {
+            setting in
+            if setting.authorizationStatus == .authorized {
+                self.someToggle = true
+            } else {
+                self.someToggle = false
+            }
+        })
     }
 }
 
