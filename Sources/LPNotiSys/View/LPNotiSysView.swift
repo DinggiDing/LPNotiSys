@@ -143,6 +143,9 @@ public struct LPNotiSysView: View {
             manager.requestAuthorization()
             manager.scheduleNotification(idx: typeSelected)
         }
+        .onChange(of: typeSelected) { newValue in
+            manager.scheduleNotification(idx: typeSelected)
+        }
         .navigationBarTitle("알림 설정")
         
     }

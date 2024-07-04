@@ -17,12 +17,12 @@ struct DeckStyleView: View {
         VStack {
             HStack {
                 Text("알림 문구 스타일")
-                    .font(.title3)
+                    .font(.callout)
                     .fontWeight(.bold)
                 Spacer()
             }
             .padding(.horizontal, 32)
-            .padding(.bottom, 4)
+            .padding(.bottom, 2)
             
             HStack {
                 Text("동기부여를 받도록 원하는 스타일을 선택하세요")
