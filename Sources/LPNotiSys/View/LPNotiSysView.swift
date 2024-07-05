@@ -151,8 +151,7 @@ public struct LPNotiSysView: View {
         .onChange(of: savedTime) {
             manager.scheduleNotification(idx: typeSelected, handm: savedTime)
         }
-        .navigationBarTitle("알림 설정")
-        
+
     }
     
     private func getpushnotiauth() {
