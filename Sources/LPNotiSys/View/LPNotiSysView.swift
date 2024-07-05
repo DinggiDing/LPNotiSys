@@ -97,6 +97,11 @@ public struct LPNotiSysView: View {
                     Toggle("시간 지정하기", isOn: $isTimeenabled)
                         .tint(Color.maingra)
                         .allowsHitTesting(isNotienabled)
+                        .onChange(of: isTimeenabled) {
+                            if !isTimeenabled {
+                                savedTime = "21:00:00"
+                            }
+                        }
                     
                     if isTimeenabled {
                         DatePicker("알림 시간", selection: $date, displayedComponents: [.hourAndMinute])
