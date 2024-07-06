@@ -6,8 +6,8 @@
 Custom Local Push Notification System is a Swift package that provides awesome functionality for your Swift projects.
 
 <p align="center">
-  <img src="[https://via.placeholder.com/150](https://github.com/DinggiDing/LPNotiSys/assets/77246590/15081209-7f1b-43f0-b2ba-5477c7b5a4ad)" width="200" />
-  <img src="[https://via.placeholder.com/150](https://github.com/DinggiDing/LPNotiSys/assets/77246590/15e313d1-8301-490a-b4b9-d9e79895bd6d)" width="200" /> 
+  <img src="https://github.com/DinggiDing/LPNotiSys/assets/77246590/15081209-7f1b-43f0-b2ba-5477c7b5a4ad" width="200" />
+  <img src="https://github.com/DinggiDing/LPNotiSys/assets/77246590/15e313d1-8301-490a-b4b9-d9e79895bd6d" width="200" /> 
 </p>
 
 ## Features
