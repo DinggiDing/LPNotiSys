@@ -7,11 +7,12 @@ Custom Local Push Notification System is a Swift package that provides awesome f
 
 ## Features
 
-- [x] Feature 1: Push notifications for different personalities. (Content-based recommendation system)
-- [x] Feature 2: What time to spend (Default or User setting)
-      - In User setting :
-          - Users get tired of push notifications based solely on random number generation.
-          - Use a hash function (using CryptoKit), a date, and a random number generator to create randomness but not periodicity.
+- [x] **Feature 1**: Push notifications for different personalities. (Content-based recommendation system)
+- [x] **Feature 2**: What time to spend (Default or User setting)
+  - **User setting**:
+    - Users get tired of push notifications based solely on random number generation.
+    - Use a hash function (using CryptoKit), a date, and a random number generator to create randomness but not periodicity.
+
 
 
 ## Requirements
