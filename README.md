@@ -1,6 +1,5 @@
 # Custom Local Push Notification System
 
-[![Build Status](https://github.com/DinggiDing/LPNotiSys/workflows/CI/badge.svg)](https://github.com/DinggiDing/LPNotiSys/actions)
 [![Swift Version](https://img.shields.io/badge/Swift-5.10-orange.svg)](https://swift.org)
 [![Platforms](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](https://developer.apple.com/ios/)
 
