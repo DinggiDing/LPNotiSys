@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "LPNotiSys",
+    defaultLocalization: "ko",
     platforms: [
         .iOS(.v17)
     ],
@@ -22,7 +23,9 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "LPNotiSys",
-            dependencies: ["BigUIPaging"]),
+            dependencies: ["BigUIPaging"],
+            resources: [.process("Resources")]
+        ),
         .testTarget(
             name: "LPNotiSysTests",
             dependencies: ["LPNotiSys"]),

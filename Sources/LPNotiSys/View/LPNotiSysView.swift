@@ -44,7 +44,7 @@ public struct LPNotiSysView: View {
                 .padding(.horizontal, 32)
                 
                 HStack {
-                    Text("꾸준한 일기 작성을 위한 나만의 알림 설정하기")
+                    Text("꾸준한 일기 작성을 위한 나만의 알림 설정하기", bundle: .module)
                         .font(.footnote)
                         .foregroundStyle(.gray)
                     Spacer()
@@ -64,11 +64,11 @@ public struct LPNotiSysView: View {
                     .animation(.easeInOut)
 
                 } header: {
-                    Text("다음으로 표시")
+                    Text("다음으로 표시", bundle: .module)
                 }
                 
                 Section {
-                    Toggle("알림", isOn: $isNotienabled)
+                    Toggle(LocalizedStringKey("알림"), isOn: $isNotienabled)
                         .onChange(of: isNotienabled) {
                             if !isNotienabled {
                                 isTimeenabled = false
@@ -79,22 +79,22 @@ public struct LPNotiSysView: View {
                     
                     if !isNotienabled {
                         HStack {
-                            Text("꾸준한 일기 작성을 위해")
+                            Text("꾸준한 일기 작성을 위해", bundle: .module)
                                 .foregroundStyle(.gray)
                             Spacer()
                             Button(action: {
                                 openAppSettings()
                             }, label: {
-                                Text("알림 켜기")
+                                Text("알림 켜기", bundle: .module)
                             })
                         }
                     }
                 } header: {
-                    Text("알림")
+                    Text("알림", bundle: .module)
                 }
                 
                 Section {
-                    Toggle("시간 지정하기", isOn: $isTimeenabled)
+                    Toggle(LocalizedStringKey("시간 지정하기"), isOn: $isTimeenabled)
                         .tint(Color.maingra)
                         .allowsHitTesting(isNotienabled)
                         .onChange(of: isTimeenabled) {
@@ -104,19 +104,19 @@ public struct LPNotiSysView: View {
                         }
                     
                     if isTimeenabled {
-                        DatePicker("알림 시간", selection: $date, displayedComponents: [.hourAndMinute])
+                        DatePicker(LocalizedStringKey("알림 시간"), selection: $date, displayedComponents: [.hourAndMinute])
                             .onChange(of: date) { newDate in
                                 // 선택한 시간을 AppStorage에 저장
                                 savedTime = timeFormatter.string(from: newDate)
                             }
                     }
                 } header: {
-                    Text("알림 시간 설정하기")
+                    Text("알림 시간 설정하기", bundle: .module)
                 }
                 
                 Section {
                     HStack {
-                        Text("알림 문구 스타일")
+                        Text("알림 문구 스타일", bundle: .module)
                         Spacer()
                         interButton(selection: $typeSelected)
                             .onTapGesture {
@@ -127,7 +127,7 @@ public struct LPNotiSysView: View {
                     }
                     .padding(.vertical, 4)
                 } header: {
-                    Text("알림 문구 설정하기")
+                    Text("알림 문구 설정하기", bundle: .module)
                 }
                 
             }

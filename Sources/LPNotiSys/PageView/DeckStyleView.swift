@@ -16,7 +16,7 @@ struct DeckStyleView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("알림 문구 스타일")
+                Text("알림 문구 스타일", bundle: .module)
                     .font(.callout)
                     .fontWeight(.bold)
                 Spacer()
@@ -25,7 +25,7 @@ struct DeckStyleView: View {
             .padding(.bottom, 2)
             
             HStack {
-                Text("동기부여를 받도록 원하는 스타일을 선택하세요")
+                Text("동기부여를 받도록 원하는 스타일을 선택하세요", bundle: .module)
                     .font(.footnote)
                     .foregroundStyle(.gray)
                 Spacer()
@@ -79,12 +79,11 @@ struct DeckStyleView: View {
 }
 
 #Preview {
-    DeckStyleView(selection: .constant(0), ispopups: .constant(true))
-}
+    DeckStyleView(selection: .constant(0), ispopups: .constant(true)).environment(\.locale, .init(identifier: "en"))}
 
 struct DeckStyleSubView: View {
     let value: Int
-    let title: String
+    let title: LocalizedStringKey
     let bodytext: String
     
     var body: some View {

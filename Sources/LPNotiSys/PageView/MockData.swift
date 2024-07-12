@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class MockData {
-    static let title = [
+    static let title : [LocalizedStringKey] = [
         "힘을 주는 메시지",
         "생각을 자극하는 질문",
         "마음을 울리는 말",
