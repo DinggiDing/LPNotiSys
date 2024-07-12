@@ -99,7 +99,8 @@ struct DeckStyleSubView: View {
                 }
                 
                 VStack(alignment: .center) {
-                    Text("[ \(title) ]")
+//                    Text("[ \(title) ]", bundle: .module)
+                    Text(title, bundle: .module)
                         .font(.headline)
                     VStack {
                         Spacer()
