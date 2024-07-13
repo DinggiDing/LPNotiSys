@@ -41,9 +41,9 @@
 "오늘 하루를 되돌아보며 느낀 점을 적어보세요.\n자신을 돌아볼 시간을 가지세요." = "Reflect on your day and write down your thoughts.\nTake some time for self-reflection.";
 
 "격려형" = "Encouraging";
-"질문형" = "Question-based";
+"질문형" = "Question";
 "감성형" = "Emotional";
-"명언형" = "Quote-based";
+"명언형" = "Quote";
 "반성형" = "Reflective";
 
 "오늘의 일기를 작성하고 성취감을 느껴보세요!" = "Write today's journal and feel accomplished!";

@@ -94,7 +94,7 @@ public struct LPNotiSysView: View {
                 }
                 
                 Section {
-                    Toggle(LocalizedStringKey("시간 지정하기"), isOn: $isTimeenabled)
+                    Toggle(localizedString(forKey: "시간 지정하기", bundle: .module),  isOn: $isTimeenabled)
                         .tint(Color.maingra)
                         .allowsHitTesting(isNotienabled)
                         .onChange(of: isTimeenabled) {

@@ -63,7 +63,7 @@ struct DeckStyleView: View {
                 
                 HStack(spacing: 13) {
                     
-                    Text("마음에 들어요")
+                    Text("마음에 들어요", bundle: .module)
                         .font(.system(size: 14, weight: .bold))
                         .onTapGesture {
                             ispopups.toggle()
