@@ -68,7 +68,7 @@ public struct LPNotiSysView: View {
                 }
                 
                 Section {
-                    Toggle(LocalizedStringKey("알림"), isOn: $isNotienabled)
+                    Toggle(NSLocalizedString("알림", bundle: .module, comment: ""), isOn: $isNotienabled)
                         .onChange(of: isNotienabled) {
                             if !isNotienabled {
                                 isTimeenabled = false
@@ -94,7 +94,7 @@ public struct LPNotiSysView: View {
                 }
                 
                 Section {
-                    Toggle(localizedString(forKey: "시간 지정하기", bundle: .module),  isOn: $isTimeenabled)
+                    Toggle(NSLocalizedString("시간 지정하기", bundle: .module, comment: ""),  isOn: $isTimeenabled)
                         .tint(Color.maingra)
                         .allowsHitTesting(isNotienabled)
                         .onChange(of: isTimeenabled) {

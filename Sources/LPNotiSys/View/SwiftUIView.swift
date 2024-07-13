@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    SwiftUIView()
-}
+//struct SwiftUIView: View {
+//    
+//    @AppStorage("LPN_isTime") private var isTimeenabled: Bool = false
+//
+//    
+//    var body: some View {
+//        Toggle(NSLocalizedString("시간 지정하기", bundle: .module, comment: ""),  isOn: $isTimeenabled)
+//            .tint(Color.maingra)
+//    }
+//}
+//
+//#Preview {
+//    SwiftUIView()
+//        .environment(\.locale, .init(identifier: "en"))
+//}
