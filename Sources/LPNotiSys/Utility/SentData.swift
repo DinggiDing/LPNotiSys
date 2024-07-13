@@ -7,8 +7,52 @@
 
 import Foundation
 
-class SentData {
-    static let def = [
+class LanguageConfiguration {
+    enum Language {
+        case korean
+        case english
+        case japanese
+    }
+    
+    static func getConfiguration(for language: Language) -> LanguageConfigurable {
+        switch language {
+        case .korean:
+            return SentData()
+        case .english:
+            return SentData_en()
+        case .japanese:
+            return SentData_ja()
+        }
+    }
+    
+    static func getCurrentLanguageConfiguration() -> LanguageConfigurable {
+        let locale = Locale.current.languageCode
+        
+        switch locale {
+        case "ko":
+            return getConfiguration(for: .korean)
+        case "en":
+            return getConfiguration(for: .english)
+        case "ja":
+            return getConfiguration(for: .japanese)
+        default:
+            return getConfiguration(for: .korean) // 기본값
+        }
+    }
+}
+    
+
+
+protocol LanguageConfigurable {
+    var def: [String] { get }
+    var que: [String] { get }
+    var emo: [String] { get }
+    var quo: [String] { get }
+    var reg: [String] { get }
+}
+
+class SentData : LanguageConfigurable {
+    let def = [
         "오늘의 일기를 작성하고 성취감을 느껴보세요!",
         "작은 기록이 큰 변화를 만듭니다. 일기를 써보세요!",
         "일기를 쓰며 자신을 더욱 알아가세요!",
@@ -21,7 +65,7 @@ class SentData {
         "당신의 하루를 기록하며 새로운 동기부여를 찾아보세요!",
     ]
     
-    static let que = [
+    let que = [
         "오늘 하루 중 가장 기억에 남는 순간은 무엇인가요?",
         "오늘 새로운 것을 배운 것이 있다면 무엇인가요?",
         "오늘 당신을 가장 웃게 만든 일은 무엇이었나요?",
@@ -35,7 +79,7 @@ class SentData {
         
     ]
     
-    static let emo = [
+    let emo = [
         "오늘 하루의 감정을 일기로 풀어보세요.",
         "당신의 마음 속 이야기를 적어보세요. 누구보다 당신이 소중합니다.",
         "마음이 힘들 때, 글로 표현하는 것만으로도 위로가 됩니다.",
@@ -49,7 +93,7 @@ class SentData {
 
     ]
     
-    static let quo = [
+    let quo = [
         "‘기록하지 않으면 사라진다.’",
         "‘하루의 끝은 새로운 시작이다.’",
         "‘오늘의 작은 한 걸음이 내일의 큰 도약이 된다.’",
@@ -62,7 +106,7 @@ class SentData {
         "‘일기는 영혼의 속삭임이다.’"
     ]
     
-    static let reg = [
+    let reg = [
         "오늘 하루를 되돌아보며 느낀 점을 적어보세요.",
         "자신을 돌아볼 시간을 가지세요. 일기를 써보세요.",
         "오늘 하루 중 가장 의미 있었던 순간은 무엇인가요?",

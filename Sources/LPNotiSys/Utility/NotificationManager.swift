@@ -26,26 +26,40 @@ class NotificationManager {
     }
     
     func scheduleNotification(idx: Int, handm: String) {
-        var message = MockData.bodytext[idx]
-        switch idx {
-        case 0:
-            let randomIndex = generateRandomInt(maxValue: SentData.def.count)
-            message = SentData.def[randomIndex]
-        case 1:
-            let randomIndex = generateRandomInt(maxValue: SentData.que.count)
-            message = SentData.que[randomIndex]
-        case 2:
-            let randomIndex = generateRandomInt(maxValue: SentData.emo.count)
-            message = SentData.emo[randomIndex]
-        case 3:
-            let randomIndex = generateRandomInt(maxValue: SentData.quo.count)
-            message = SentData.quo[randomIndex]
-        case 4:
-            let randomIndex = generateRandomInt(maxValue: SentData.reg.count)
-            message = SentData.reg[randomIndex]
-        default:
-            let randomIndex = generateRandomInt(maxValue: SentData.def.count)
-            message = SentData.def[randomIndex]
+        var message = MockData.exbodytextLocal[idx]
+//        switch idx {
+//        case 0:
+//            let randomIndex = generateRandomInt(maxValue: SentData.def.count)
+//            message = SentData.def[randomIndex]
+//        case 1:
+//            let randomIndex = generateRandomInt(maxValue: SentData.que.count)
+//            message = SentData.que[randomIndex]
+//        case 2:
+//            let randomIndex = generateRandomInt(maxValue: SentData.emo.count)
+//            message = SentData.emo[randomIndex]
+//        case 3:
+//            let randomIndex = generateRandomInt(maxValue: SentData.quo.count)
+//            message = SentData.quo[randomIndex]
+//        case 4:
+//            let randomIndex = generateRandomInt(maxValue: SentData.reg.count)
+//            message = SentData.reg[randomIndex]
+//        default:
+//            let randomIndex = generateRandomInt(maxValue: SentData.def.count)
+//            message = SentData.def[randomIndex]
+//        }
+        
+        let currentConfig = LanguageConfiguration.getCurrentLanguageConfiguration()
+        let dataCategories: [Int: [String]] = [
+            0: currentConfig.def,
+            1: currentConfig.que,
+            2: currentConfig.emo,
+            3: currentConfig.quo,
+            4: currentConfig.reg
+        ]
+        let validIdx = dataCategories.keys.contains(idx) ? idx : 0
+        if let selectedCategory = dataCategories[validIdx] {
+            let randomIndex = generateRandomInt(maxValue: selectedCategory.count)
+            message = selectedCategory[randomIndex]
         }
         
         var hour = 0

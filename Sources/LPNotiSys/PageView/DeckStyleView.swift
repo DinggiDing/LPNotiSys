@@ -84,7 +84,7 @@ struct DeckStyleView: View {
 struct DeckStyleSubView: View {
     let value: Int
     let title: LocalizedStringKey
-    let bodytext: String
+    let bodytext: LocalizedStringKey
     
     var body: some View {
         GeometryReader { geometry in
@@ -106,7 +106,7 @@ struct DeckStyleSubView: View {
                         Spacer()
                         Image(systemName: "number")
                         Spacer()
-                        Text(bodytext)
+                        Text(bodytext, bundle: .module)
                             .multilineTextAlignment(.center)
                             .lineSpacing(7.0)
                         Spacer()

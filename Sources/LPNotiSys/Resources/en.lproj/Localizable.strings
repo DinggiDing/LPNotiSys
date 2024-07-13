@@ -33,3 +33,21 @@
 "Inspirational quote";
 "자신을 돌아보는 시간" =
 "Time for self-reflection";
+
+"오늘의 일기를 작성하고 성취감을 느껴보세요!\n작은 기록이 큰 변화를 만듭니다!" = "Write today's journal and feel accomplished!\nSmall entries create big changes!";
+"오늘 하루 중 가장 행복했던 순간은 무엇인가요?\n오늘 무슨 일이 있었나요? 지금 적어보세요!" = "What was the happiest moment of your day?\nWhat happened today? Write it down now!";
+"마음을 정리할 시간이 필요하지 않으신가요?\n오늘 하루의 감정을 일기로 풀어보세요." = "Do you need time to organize your thoughts?\nPour out today's emotions into your journal.";
+"‘오늘의 작은 한 걸음이 내일의 큰 도약이 된다.’\n‘기록은 기억을 붙잡는 사슬이다.’" = "'Today's small step is tomorrow's big leap.'\n'Journaling is the chain that captures memories.'";
+"오늘 하루를 되돌아보며 느낀 점을 적어보세요.\n자신을 돌아볼 시간을 가지세요." = "Reflect on your day and write down your thoughts.\nTake some time for self-reflection.";
+
+"격려형" = "Encouraging";
+"질문형" = "Question-based";
+"감성형" = "Emotional";
+"명언형" = "Quote-based";
+"반성형" = "Reflective";
+
+"오늘의 일기를 작성하고 성취감을 느껴보세요!" = "Write today's journal and feel accomplished!";
+"오늘 하루 중 가장 행복했던 순간은 무엇인가요?" = "What was the happiest moment of your day?";
+"마음을 정리할 시간이 필요하지 않으신가요?" = "Do you need time to organize your thoughts?";
+"‘오늘의 작은 한 걸음이 내일의 큰 도약이 된다.'" = "Today's small step is tomorrow's big leap.";
+"오늘 하루를 되돌아보며 느낀 점을 적어보세요." = "Reflect on your day and write down your thoughts.";

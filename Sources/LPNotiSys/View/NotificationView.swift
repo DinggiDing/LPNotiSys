@@ -10,7 +10,7 @@ import SwiftUI
 struct NotificationView: View {
     let appName: String = "1 Day Diary"
     var timeAgo: String
-    var content: String
+    var content: LocalizedStringKey
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -35,7 +35,7 @@ struct NotificationView: View {
             }
             .padding(.bottom, 8)
             
-            Text(content)
+            Text(content, bundle: .module)
                 .font(.system(size: 14))
                 .foregroundColor(.white)
                 .padding(.bottom, 4)

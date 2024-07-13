@@ -28,7 +28,7 @@ struct interButton: View {
                 
                 HStack(spacing: 13) {
                     
-                    Text(MockData.type[selection])
+                    Text(MockData.type[selection], bundle: .module)
                         .font(.system(size: 14, weight: .bold))
                         
                 }
