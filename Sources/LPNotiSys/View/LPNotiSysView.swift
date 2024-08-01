@@ -104,7 +104,7 @@ public struct LPNotiSysView: View {
                         }
                     
                     if isTimeenabled {
-                        DatePicker(LocalizedStringKey("알림 시간"), selection: $date, displayedComponents: [.hourAndMinute])
+                        DatePicker(NSLocalizedString("알림 시간", bundle: .module, comment: ""), selection: $date, displayedComponents: [.hourAndMinute])
                             .onChange(of: date) { newDate in
                                 // 선택한 시간을 AppStorage에 저장
                                 savedTime = timeFormatter.string(from: newDate)
